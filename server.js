@@ -18,7 +18,7 @@ router.get('/message', (req, res) => {
 router.post('/message', (req, res) => {
   console.log(req.query);
   console.log(req.body);
-  res.send(`Mensaje ${req.body.text} añadido correctamente`);
+  res.status(201).send([{error: '', body: 'Creado correctamente'}]);
 });
 
 app.listen(3000);
