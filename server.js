@@ -2,7 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 
+const db = require('./db');
+
 const router = require('./network/routes');
+
+db(`mongodb+srv://${process.env.MONGO_ATLAS_USER}:${process.env.MONGO_ATLAS_PASSWORD}@cluster0.lipiocn.mongodb.net/?retryWrites=true&w=majority`);
 
 var app = express();
 app.use(bodyParser.json());
