@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const socket = require('./socket');
 require('dotenv').config();
@@ -9,6 +10,8 @@ const db = require('./db');
 const router = require('./network/routes');
 
 db(`mongodb+srv://${process.env.MONGO_ATLAS_USER}:${process.env.MONGO_ATLAS_PASSWORD}@cluster0.lipiocn.mongodb.net/?retryWrites=true&w=majority`);
+
+app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
